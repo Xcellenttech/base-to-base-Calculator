@@ -1,0 +1,133 @@
+/*Styling code for the Calculator*/
+*{
+    box-sizing: border-box;
+    margin: 0;padding: 0;
+    font-family: systen-ui, sans-serif;
+}
+
+
+body{
+    background-color: rgb(225, 222, 234);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_container{
+    background-color: blue;
+    padding: 10px 20px;
+    padding-bottom: 30px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    animation: anime 2s linear;
+}
+
+@keyframes anime {
+    from{
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.topCaption{
+    margin-bottom: 15px; 
+    text-align: center; 
+    color: white; 
+    font-weight: bold; 
+    font-size: 1.2rem;
+}
+
+
+.input_class1, .input_class{
+    width: 100%;
+    height: 35px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 1rem;
+}
+
+.input_class1:focus, .input_class:focus{
+    outline: none;
+    border: 2px solid #facc15;
+    background-color: #fff;
+}
+
+.input_box{
+    display: flex;
+    gap: 8px;
+}
+
+.main_container .input_box .input_class{
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.btn-box{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px ;
+}
+
+.btn-box .btn{
+    flex: 1;
+    height: 35px;
+    background-color: magenta;
+    color: black;
+    font-family: cursive;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover{
+    opacity: 0.85;
+    /* background-color: #ff4dff; */
+}
+
+.btn:active{
+    transform: scale(0.97);
+}
+
+.main_container .result{
+    color: #fff;
+    font-family: cursive;
+    text-align: center;
+    word-break: break-all;
+    margin-top: 15px;
+}
+
+/*Media Query for responsiveness*/
+@media (max-width: 768px) {
+    .main_container{
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px ){
+    .input_box{
+        flex-direction: column;
+    }
+
+    .btn-box{
+        flex-direction: column;
+    }
+
+    .btn{
+        width: 100%;
+        height: 40px;
+    }
+}
