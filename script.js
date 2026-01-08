@@ -81,7 +81,7 @@ function converter(){
   const result = document.querySelector(".result");
 
   if(!num || isNaN(fromBase) || isNaN(toBase)){
-    result.innerHTML = 'please fill all the field';
+    result.innerHTML = 'please fill all the fields';
     return ;
   }
 
