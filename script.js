@@ -85,12 +85,12 @@ function converter(){
     return ;
   }
 
-  if(fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36){
-    result.innerHTML = ' base 2 to base 36 is allowed';
+  else if(fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36){
+    result.innerHTML = 'Only base 2 to base 36 is allowed';
     return;
   }
 
-  if(!checkdigit(num, fromBase)){
+ else if(!checkdigit(num, fromBase)){
     result.innerHTML = `Invalid digits for base ${fromBase}`;
     return;
   }
