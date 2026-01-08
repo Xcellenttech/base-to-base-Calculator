@@ -91,6 +91,7 @@ body{
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
+    padding: 10px 0;
 }
 
 .btn:hover{
