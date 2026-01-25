@@ -2,28 +2,35 @@
 
 // Verification and validaton of digits
 function checkdigit(number, base){
+  if(number.startsWith('-')){
+    number = number.slice(1);
+  }
+
   number = number.toLowerCase();
   const spliter = number.split(".") // Splits the number into two parts
-  
+  console.log(spliter)
 
   if(spliter.length > 2){
     return false
   }
   
   for (let part of spliter){
+    console.log(part)
     for(let dig of part){
+      console.log(dig)
       let digit = parseInt(dig, 36); //This will convert letters from A-Z to 10-35
+      console.log(digit)
       if(isNaN(digit) || digit >= base){
       return false;}
     }
   }
-  return true
+  return true;
 }
 
 //Conversion to Denary (Base 10)
 const toDenary = (number, base)=>{
   number = number.toLowerCase() 
-  const[intpart, fractpart = ''] = number.split(".") //The number will return to parts named intpart and fractpart when the control sees '.' in the inputed number. Else, it will return the number.
+  const[intpart, fractpart = ''] = number.split(".") //The number will return two parts named intpart and fractpart when the control sees '.' in the inputed number. Else, it will return the number.
   let denaryValue = 0 
   
   //Integer Part of the number
@@ -75,7 +82,7 @@ const fromDecimal = (denary, base, precision = 10 )=>{
 
 
 function converter(){
-  const num = document.getElementById("number").value.trim();
+  let num = document.getElementById("number").value.trim();
   const fromBase =parseInt(document.getElementById("fromBase").value);
   const toBase = parseInt(document.getElementById('toBase').value);
   const result = document.querySelector(".result");
@@ -85,19 +92,32 @@ function converter(){
     return ;
   }
 
-  else if(fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36){
+  if(fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36){
     result.innerHTML = 'Only base 2 to base 36 is allowed';
     return;
   }
 
- else if(!checkdigit(num, fromBase)){
+  //To handle the negative sign 
+  let isNegative = false;
+  if(num.startsWith('-')){
+    isNegative = true;
+    num = num.slice(1)
+  }
+
+
+
+ if(!checkdigit(num, fromBase)){
     result.innerHTML = `Invalid digits for base ${fromBase}`;
     return;
   }
 
   const denaryValue = toDenary(num, fromBase)
-  
-  result.innerHTML = fromDecimal(denaryValue, toBase);
+  let converted = fromDecimal(denaryValue, toBase)
+  if(isNegative){
+    converted = '-' + converted
+  }
+
+  result.innerHTML = converted;
 
 }
 
